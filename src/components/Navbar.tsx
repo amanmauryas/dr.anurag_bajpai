@@ -17,7 +17,7 @@ const mainLinks: NavLink[] = [
   { label: "Research", href: "/research" },
   { label: "Books", href: "/books" },
   { label: "Teaching", href: "/teaching" },
-  { label: "Patient Resources", href: "/resources" },
+  { label: "Patient Calculator", href: "/resources" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];

@@ -38,9 +38,10 @@ export default function Header() {
       dropdown: [
         { name: "Clinical Expertise", href: "/expertise" },
         { name: "Conditions Library", href: "/conditions" },
-        { name: "Patient Resources & Calculators", href: "/resources" },
+        { name: "Patient Resources", href: "/resources" },
       ],
     },
+    { name: "Patient Calculator", href: "/resources" },
     {
       name: "Academic & Research",
       dropdown: [

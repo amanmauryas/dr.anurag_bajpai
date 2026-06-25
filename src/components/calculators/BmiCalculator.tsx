@@ -25,27 +25,47 @@ export default function BmiCalculator() {
 
     const bmiValue = parseFloat((w / (h * h)).toFixed(1));
     
-    // Pediatric BMI categories are based on percentiles, we'll model standard pediatric guidelines:
+    // Pediatric vs Adult BMI categories
     let category = "";
     let description = "";
     let color = "";
 
-    if (bmiValue < 14) {
-      category = "Underweight";
-      description = "Your child's BMI is in the underweight range. It is recommended to discuss their nutrition and development with a pediatrician.";
-      color = "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400";
-    } else if (bmiValue >= 14 && bmiValue < 18.5) {
-      category = "Healthy Weight";
-      description = "Your child is in the healthy weight range. Maintain a balanced diet and encourage active physical play.";
-      color = "bg-emerald-500/10 border-emerald-500 text-emerald-600 dark:text-emerald-400";
-    } else if (bmiValue >= 18.5 && bmiValue < 22) {
-      category = "Overweight Risk";
-      description = "Your child's BMI indicates a potential risk of being overweight. Focus on healthy eating habits and reducing screen time.";
-      color = "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400";
+    if (a >= 20) {
+      if (bmiValue < 18.5) {
+        category = "Underweight";
+        description = "Your BMI is in the underweight range. We recommend evaluating your nutritional habits or discussing with a doctor/nutritionist.";
+        color = "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400";
+      } else if (bmiValue >= 18.5 && bmiValue < 25) {
+        category = "Healthy Weight";
+        description = "Your BMI is in the healthy weight range. Maintain a balanced diet and regular physical activity.";
+        color = "bg-emerald-500/10 border-emerald-500 text-emerald-600 dark:text-emerald-400";
+      } else if (bmiValue >= 25 && bmiValue < 30) {
+        category = "Overweight";
+        description = "Your BMI indicates that you are overweight. Healthy eating habits and regular exercise can help manage weight.";
+        color = "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400";
+      } else {
+        category = "Obesity";
+        description = "Your BMI falls in the obese range. We recommend scheduling an evaluation to check for metabolic factors.";
+        color = "bg-rose-500/10 border-rose-500 text-rose-600 dark:text-rose-400";
+      }
     } else {
-      category = "Obesity Risk";
-      description = "Your child's BMI falls in the obesity risk range. An evaluation by a pediatric endocrinologist is recommended to check for metabolic factors.";
-      color = "bg-rose-500/10 border-rose-500 text-rose-600 dark:text-rose-400";
+      if (bmiValue < 14) {
+        category = "Underweight";
+        description = "Your child's BMI is in the underweight range. It is recommended to discuss their nutrition and development with a pediatrician.";
+        color = "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400";
+      } else if (bmiValue >= 14 && bmiValue < 18.5) {
+        category = "Healthy Weight";
+        description = "Your child is in the healthy weight range. Maintain a balanced diet and encourage active physical play.";
+        color = "bg-emerald-500/10 border-emerald-500 text-emerald-600 dark:text-emerald-400";
+      } else if (bmiValue >= 18.5 && bmiValue < 22) {
+        category = "Overweight Risk";
+        description = "Your child's BMI indicates a potential risk of being overweight. Focus on healthy eating habits and reducing screen time.";
+        color = "bg-orange-500/10 border-orange-500 text-orange-600 dark:text-orange-400";
+      } else {
+        category = "Obesity Risk";
+        description = "Your child's BMI falls in the obesity risk range. An evaluation by a pediatric endocrinologist is recommended to check for metabolic factors.";
+        color = "bg-rose-500/10 border-rose-500 text-rose-600 dark:text-rose-400";
+      }
     }
 
     setResult({ bmi: bmiValue, category, description, color });
@@ -66,8 +86,8 @@ export default function BmiCalculator() {
           <Calculator className="w-6 h-6" />
         </div>
         <div>
-          <h3 className="font-bold text-lg text-slate-900 dark:text-white">Pediatric BMI Calculator</h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">Calculate body mass index for children & adolescents</p>
+          <h3 className="font-bold text-lg text-slate-900 dark:text-white">BMI Calculator</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Calculate body mass index for children, adolescents & adults</p>
         </div>
       </div>
 
@@ -82,10 +102,10 @@ export default function BmiCalculator() {
                 type="number"
                 required
                 min="2"
-                max="20"
+                max="120"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
-                placeholder="e.g. 8"
+                placeholder="e.g. 25"
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent text-sm focus:outline-none focus:border-brand-500 text-slate-950 dark:text-white"
               />
             </div>

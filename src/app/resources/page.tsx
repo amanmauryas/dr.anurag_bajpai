@@ -29,7 +29,7 @@ export default function ResourcesPage() {
             Patient Resources & Calculators
           </h1>
           <p className="text-base text-gray-300 max-w-2xl mt-2">
-            Polish your child's developmental tracking with evidence-based pediatric calculators and clinical appointment checklists.
+            Polish developmental tracking and family health with evidence-based health calculators and clinical appointment checklists.
           </p>
         </div>
       </section>
@@ -60,7 +60,7 @@ export default function ResourcesPage() {
                     : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
                 }`}
               >
-                Pediatric BMI Check
+                BMI Calculator
               </button>
             </div>
 
